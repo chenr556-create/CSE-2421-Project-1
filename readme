@@ -1,0 +1,41 @@
+Name: Raymond Chen
+
+I certify that I completed all of the work myself with no aid from anyone aside from the instructor or the undergraduate graders.
+
+Part 1:
+
+Q1: I created the project1 directory using mkdir, then used mv to move the C and header files into that directory. Finally, I used cd project1 to enter the directory. 
+
+Q2: It should list all files including hidden files in detailed format sorted by modification time in reverse order.
+
+Q3: cd leads to home directory since there isn't a argument, cd ~ specifically goes to your home directory, cd . stays in the current directory, cd .. moves up one directory.
+
+Part 2:
+
+Q1: gcc -std=c99 -pedantic -Wimplicit-function-declaration -Wreturn-type -g -c project1.c -o project1.o
+gcc -g -o project1 project1.o
+
+Q2: Running make again caused it to rebuilt and ouput gcc -std=c99 -pedantic -Wimplicit-function-declaration -Wreturn-type -g -c project1.c -o project1.o
+gcc -g -o project1 project1.o
+
+Q3: Successfully made a zip file
+
+Q5: It output 
+ls -lt >> numbers
+date >> numbers
+ls -lt >> numbers 
+since the makefile was modified its timestamp becomes newer than numbers, so make determined that numbers needed to be rebuilt.
+
+Part 3: 
+
+Q1: The line number displayed after using the next command is the line that is about to be executed, not the line that just ran. Since GDB stops before executing the displayed line and shows it as the current line.
+
+Q2: The first time I printed i, its value was 1. After using next, its value was still 1 because it had not been changed yet. I then used set variable i = 5, which changed the value of i while the program was running. The output was affected by the value of i when the function was called.
+
+Q3:To step into a function, I use the step command instead of next. The step command enters the function being called so that I can examine its execution one line at a time.
+
+Q4: Yes, the output changed. I changed the value of x to 32 while stopped inside the function. Since 32 is even, the function returned the value indicating that the number was even, so the program printed that the number was even.
+
+Q5: The crash occurred because the program eventually tried to divide by zero. In the art function, the for loop allows i to become 0. Then line 33 calls divide(bot, i), passing 0 as the second argument. The divide function attempts to calculate x / y, so it tries to divide by zero, which causes the program to crash.
+
+Q6: The problem can be fixed by changing the for loop in art so that i does not reach 0. For example, the loop could be changed from for(i=bot; i>=0; i--) to for(i=bot; i>0; i--). This prevents divide from ever receiving zero as its second argument. Using GDB was faster than simply staring at the code because it showed where the crash occurred and allowed me to inspect the stack frames and variable values to determine why it happened.
